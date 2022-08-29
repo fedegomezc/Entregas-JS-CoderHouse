@@ -4,11 +4,11 @@ const cantidadProductos = () => {
     // Se pide la cantidad de productos a llevar y se valida la entrada
     while(true){
         cantidad = parseInt(prompt("Ingrese la cantidad de productos a llevar: "))
-        if (!isNaN(cantidad) && cantidad!=null && cantidad!="" ){
-            // es numero
+        if (!isNaN(cantidad) && cantidad!=null && cantidad!="" && cantidad<=10 && cantidad>0 ){
+            // es numero y es menor o igual a 10 productos
             break
         } else {
-            alert("Ingrese un número")
+            alert("Ingrese un número válido (Puede ingresar hasta 10 productos)")
         }
     }
     return cantidad
@@ -70,4 +70,20 @@ const descuento = (valor) => {
  }
 
 
+// Simulador
+// Pedimos al usuario la cantidad de productos a llevar
+let nProductos = cantidadProductos()
+document.write("La cantidad de productos a llevar son: " + nProductos + "<br>")
 
+// Solicitamos que ingrese el precio de cada producto
+let sumaProd = ingresoPrecios(nProductos)
+document.write("La suma de los precios de sus productos es: $" + sumaProd + "<br>")
+
+// Mostramos el precio con IVA
+let precioConIva = precioIva(sumaProd).toFixed(2)
+document.write("El precio con IVA es de: $" + precioConIva + "<br>")
+
+// Preguntamos al usuario si tiene un cupón de descuento y en el caso de ser así aplicamos el descuento (códigos válidos: 'TIENDA10', 'PROMO20')
+let TotalConDescuentos = descuento(precioConIva)
+document.write("Descuento (cupón): $" + (precioConIva - TotalConDescuentos) + "<br>")
+document.write("<h3>TOTAL: " + TotalConDescuentos + "<h3>")
