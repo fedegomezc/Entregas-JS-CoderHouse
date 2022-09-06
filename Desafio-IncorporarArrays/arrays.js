@@ -18,7 +18,7 @@ class Cafe {
     }
 }
 
-const stock_productos = []
+const stockProductos = []
 
 function agregarProducto () {
     let nombre = prompt('Ingrese el nombre del producto')
@@ -27,11 +27,11 @@ function agregarProducto () {
     let descripcion = prompt('Ingrese descripción del producto')
     // let descripcion = completar_descripcion()          // Se omite el uso de la función con fines prácticos
     const prod = new Cafe (nombre, precio, stock, descripcion)
-    stock_productos.push(prod)
+    stockProductos.push(prod)
     // console.table(stock_productos)
 }
 
-// ejemplos de instancias-objetos Cafe (nombre, precio, cantidad, descripción)
+// Ejemplos de instancias-objetos Cafe (nombre, precio, cantidad, descripción)
 let cafe1 = new Cafe('HONDURAS', 3290, 20, 'descripción1')
 let cafe2 = new Cafe('MEXICO', 3190, 10, 'descripción2')
 let cafe3 = new Cafe('COSTA RICA', 2489, 15, 'descripción3')
@@ -39,14 +39,19 @@ let cafe4 = new Cafe('ETIOPIA', 2489, 15, 'descripción4')
 let cafe5 = new Cafe('EL SALVADOR', 1593, 18, 'descripción5')
 let cafe6 = new Cafe('COLOMBIA', 1593, 9, 'descripción6')
 
-// AGREGAMOS LOS OBJETOS A UN ARRAY
-stock_productos.push(cafe1, cafe2, cafe3, cafe4, cafe5, cafe6)
+// AGREGAMOS LOS OBJETOS AL ARRAY stockProductos
+stockProductos.push(cafe1, cafe2, cafe3, cafe4, cafe5, cafe6)
 
 // RECORRIDO DE UN ARRAY - imprimimos por consola los nombres de los productos
-for (const producto of stock_productos) {
-    console.log(producto.nombre)
-    console.log(producto.precio)
-}
+// for (const producto of stockProductos) {
+//     console.table(producto)
+// }
+
+// AGREGAR UN PRODUCTO Y LUEGO VERLO INCORPORADO EN LA LISTA
+// agregarProducto()
+// console.table(stockProductos)
+
+
 
 
 /////// A los fines prácticos se omite función de incorporar descripción detallada del café ///////
