@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
 * {
     margin:0;
     padding:0;
@@ -26,7 +28,7 @@ section{
     border-radius: 7px;
     transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
     background-color: rgba(88, 68, 43, 0.474);
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Roboto',sans-serif;
 }
 .card h3{
     margin: 0.5em 0em;
