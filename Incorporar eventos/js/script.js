@@ -1,4 +1,5 @@
 // Products list
+const cart = [];
 const cafes = [
     {
         id: 1,
@@ -67,27 +68,106 @@ const cafes = [
 ];
 
 
-// dynamic loading of products - interaction with HTML
-// If another product is added in 'cafes' list, the page is automatically updated
+
+// buttons fuction
+const buttonEvent = () => 
+{
+    // Select all buttons
+    let buttons = document.querySelectorAll('.button');
+    // Loop buttons and add to cart list when the 'click' event occurs
+    for (const button of buttons) {
+        button.addEventListener('click', ()=> addToCart(button.id))
+    }
+}
+
+// Add products to cart array and add 'quantity' value
+const addToCart = (id) => 
+{
+    // If the product is already exist in the cart, add 1 to the quantity
+    let found = cart.find(element => element.id == id);
+            if(found)
+            {
+                // esta en el carrito
+                found.quantity++;
+            }
+            else
+            {
+                // if it is not in the cart, add it 
+                let cafe = cafes.find(element => element.id == id);
+                if(cafe)
+                {
+                    let newCafe = {
+                        id:cafe.id,
+                        name: cafe.name,
+                        price: cafe.price,
+                        description: cafe.description,
+                        image: cafe.image,
+                        quantity: 1
+                    }
+                    cart.push(newCafe);
+                }
+            }
+    updateCart(cart);
+}
+
+// every time a product is added the cart is updated
+const updateCart = (cart) =>
+{
+    // Get the cart section node
+    let cartContainer = document.querySelector('#cart');
+    // Get the child element node
+    let container = document.getElementById("cartContainer");
+    // if the container exist it is removed
+    if(container)
+    {
+        container.parentNode.removeChild(container);
+    }
+    // create element for new products added in cartContainer 
+    let div = document.createElement('div');
+    div.setAttribute('id','cartContainer');
+    // Add the title section
+    div.innerHTML += ` <h2>Carrito de compras</h2>`;
+    // add products
+    for (const product of cart)
+    {
+        div.innerHTML += `
+            <div class="cart-item">
+                <h4>${product.name}</h4>
+                <h4>$ ${product.price}</h4>
+                <h4>Cantidad: ${product.quantity}</h4>
+            </div>
+        `;
+    }
+    // add node to cartContainer
+    cartContainer.appendChild(div);
+}
+
+// dynamic loading of products
+// If another product is added in 'cafes' array, the page is automatically updated
 const loadProducts = (cafes) =>
 {
     // Select section #container node
     let container = document.querySelector('#container');
     // Looping Products array
-    for (const product of cafes) {
+    for (const cafe of cafes) 
+    {
         // Create 'div' card
-        let div = document.createElement('div')
+        let div = document.createElement('div');
         // set attribute for css style
-        div.setAttribute('class', 'card')
+        div.setAttribute('class', 'card');
         // Create dynamic HTML content  
-        div.innerHTML = `
-            <img src="${product.image}" alt="${product.description}">
-            <h3>$${product.price}</h3>
-            <h4>${product.name}</h4>
+        div.innerHTML = 
+        `
+            <img src="${cafe.image}" alt="${cafe.description}">
+            <h3>$${cafe.price}</h3>
+            <h4>${cafe.name}</h4>
+            <button class="button" id="${cafe.id}">Agregar al carrito</button>
         `;
         // Add 'div' to container section
-        container.appendChild(div)
+        container.appendChild(div);
     }
 }
 
 loadProducts(cafes);
+buttonEvent()
+

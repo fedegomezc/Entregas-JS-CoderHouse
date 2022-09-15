@@ -7,7 +7,22 @@
 }
 
 body{
-    background-color: rgb(12, 6, 0);
+    background-color: rgba(12, 12, 12, 1);
+}
+
+.header{
+    display: flex;
+    width: 100%;
+    min-width: 350px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: rgba(63, 47, 33, 1);
+}
+
+.header h1{
+    color: rgba(140, 112, 88, 1);
+    font-family: 'Roboto', sans-serif;
 }
 
 section{
@@ -17,36 +32,86 @@ section{
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 10em;
+    padding: 3em;
 }
 
 .card{
-    width: 210px;
-    height: 310px;
+    width: 250px;
+    height: auto;
     margin: 15px;
     padding: 0.7em;
     border-radius: 7px;
     transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    background-color: rgba(88, 68, 43, 0.474);
+    background-color: rgba(63, 47, 33, 1);
     font-family: 'Roboto',sans-serif;
 }
 .card h3{
     margin: 0.5em 0em;
-    color: rgb(248, 225, 192);
+    color: rgba(216, 204, 197, 1);
     font-weight: bold;
 }
 .card h4{
     font-size: 0.875em;
     margin: 0.5em 0em;
-    color: rgb(204, 179, 153);
+    color: rgba(216, 204, 197, 1);
     font-weight: normal;
 }
 
 .card:hover{
     transform: translateY(-7px);
-    box-shadow: 1.25px 1.25px 10px rgba(134, 109, 72, 0.384);
+    box-shadow: 1.25px 1.25px 10px rgba(191, 167, 147, 1);
 }
 
 .card img{
     width: 100%;
 }
+
+.card .button{
+    width: 80%;
+    border: none;
+    padding: 0.7em;
+    background-color: rgba(216, 204, 197, 1);
+    color: rgba(12, 12, 12, 1);
+    font-family: 'Roboto',sans-serif;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#cart{
+    height: auto;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0px auto;
+    color: rgba(216, 204, 197, 1);
+}
+
+#cart #cartContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#cart #cartContainer h2{
+    width: 100%;
+    text-align:center;
+    font-family: 'Roboto',sans-serif;
+    margin-bottom: 1em;
+}
+
+#cart #cartContainer .cart-item{
+    background-color:rgba(63, 47, 33, 1);
+    width: 100%;
+    margin: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    padding: 1em;
+}
+#cart #cartContainer .cart-item h4{
+    width: 250px;
+    text-align:center;
+}
+
+
