@@ -113,12 +113,12 @@ const addToCart = (id) =>
     let found = cart.find(element => element.id == id);
             if(found)
             {
-                // esta en el carrito
+                // it's already in the cart
                 found.quantity++;
             }
             else
             {
-                // if it is not in the cart, add it 
+                // if it isn't in the cart, add it 
                 let cafe = cafes.find(element => element.id == id);
                 if(cafe)
                 {
