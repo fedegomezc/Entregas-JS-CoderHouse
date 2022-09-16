@@ -25,6 +25,11 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+div .Search {
+    font-family: 'Roboto', sans-serif;
+    font-size: large;    
+}
+
 section{
     display: flex;
     width: 100%;

@@ -69,7 +69,33 @@ const cafes = [
 
 
 
-// buttons fuction
+// dynamic loading of products
+// If another product is added in 'cafes' array, the page is automatically updated
+const loadProducts = (cafes) =>
+{
+    // Select section #container node
+    let container = document.querySelector('#container');
+    // Looping Products array
+    for (const cafe of cafes) 
+    {
+        // Create 'div' card
+        let div = document.createElement('div');
+        // set attribute for css style
+        div.setAttribute('class', 'card');
+        // Create dynamic HTML content  
+        div.innerHTML = 
+        `
+            <img src="${cafe.image}" alt="${cafe.description}">
+            <h3>$${cafe.price}</h3>
+            <h4>${cafe.name}</h4>
+            <button class="button" id="${cafe.id}">Agregar al carrito</button>
+        `;
+        // Add 'div' to container section
+        container.appendChild(div);
+    }
+}
+
+// buttons function
 const buttonEvent = () => 
 {
     // Select all buttons
@@ -127,6 +153,8 @@ const updateCart = (cart) =>
     div.setAttribute('id','cartContainer');
     // Add the title section
     div.innerHTML += ` <h2>Carrito de compras</h2>`;
+    // variable to save total price of products
+    let total = 0;
     // add products
     for (const product of cart)
     {
@@ -137,37 +165,17 @@ const updateCart = (cart) =>
                 <h4>Cantidad: ${product.quantity}</h4>
             </div>
         `;
+        // sum total price
+        total += product.price * product.quantity
     }
+    // add total section
+    div.innerHTML += `
+        <h2>Total = $
+        ${total}</h2>
+    `;
     // add node to cartContainer
     cartContainer.appendChild(div);
 }
 
-// dynamic loading of products
-// If another product is added in 'cafes' array, the page is automatically updated
-const loadProducts = (cafes) =>
-{
-    // Select section #container node
-    let container = document.querySelector('#container');
-    // Looping Products array
-    for (const cafe of cafes) 
-    {
-        // Create 'div' card
-        let div = document.createElement('div');
-        // set attribute for css style
-        div.setAttribute('class', 'card');
-        // Create dynamic HTML content  
-        div.innerHTML = 
-        `
-            <img src="${cafe.image}" alt="${cafe.description}">
-            <h3>$${cafe.price}</h3>
-            <h4>${cafe.name}</h4>
-            <button class="button" id="${cafe.id}">Agregar al carrito</button>
-        `;
-        // Add 'div' to container section
-        container.appendChild(div);
-    }
-}
-
 loadProducts(cafes);
 buttonEvent()
-
